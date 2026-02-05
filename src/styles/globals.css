@@ -1,0 +1,434 @@
+/* Estilos globales para la aplicación de cálculo solar */
+
+/* Variables CSS personalizadas */
+:root {
+  --color-primary: 251, 146, 60; /* orange-500 */
+  --color-primary-dark: 234, 88, 12; /* orange-600 */
+  --color-secondary: 251, 191, 36; /* amber-400 */
+  --color-accent: 59, 130, 246; /* blue-500 */
+  --color-success: 34, 197, 94; /* green-500 */
+  --color-warning: 245, 158, 11; /* amber-500 */
+  --color-danger: 239, 68, 68; /* red-500 */
+  
+  /* Gradientes profesionales */
+  --gradient-primary: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(var(--color-accent)) 0%, rgb(99, 102, 241) 100%);
+  --gradient-success: linear-gradient(135deg, rgb(var(--color-success)) 0%, rgb(16, 185, 129) 100%);
+  --gradient-dark: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(31, 41, 55) 100%);
+  
+  /* Sombras profesionales */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Bordes redondeados */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  
+  /* Transiciones */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+/* Estilos base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: rgb(17, 24, 39);
+  background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(241, 245, 249) 100%);
+  min-height: 100vh;
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: rgb(243, 244, 246);
+    background: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(31, 41, 55) 100%);
+  }
+}
+
+/* Componentes personalizados */
+
+/* Tarjetas mejoradas */
+.card-professional {
+  @apply bg-white/90 backdrop-blur-sm border-0 shadow-xl rounded-2xl overflow-hidden transition-all duration-300;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-professional:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Encabezados de tarjetas */
+.card-header-gradient {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.card-header-gradient .card-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-header-gradient .card-description {
+  opacity: 0.9;
+  font-size: 0.875rem;
+}
+
+/* Botones profesionales */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: white;
+  color: rgb(var(--color-primary));
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  border: 2px solid rgb(var(--color-primary));
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: rgb(var(--color-primary));
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Badges personalizados */
+.badge-success {
+  background: linear-gradient(135deg, rgb(34, 197, 94), rgb(16, 185, 129));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, rgb(245, 158, 11), rgb(217, 119, 6));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-info {
+  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(99, 102, 241));
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Inputs mejorados */
+.input-professional {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgb(229, 231, 235);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  transition: all var(--transition-normal);
+  background: white;
+}
+
+.input-professional:focus {
+  outline: none;
+  border-color: rgb(var(--color-primary));
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.1);
+}
+
+/* Sliders personalizados */
+.slider-professional {
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(to right, 
+    rgb(var(--color-primary)) 0%, 
+    rgb(var(--color-secondary)) 100%);
+  outline: none;
+  opacity: 0.9;
+  transition: opacity var(--transition-normal);
+}
+
+.slider-professional:hover {
+  opacity: 1;
+}
+
+.slider-professional::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid rgb(var(--color-primary));
+  transition: all var(--transition-normal);
+}
+
+.slider-professional::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tablas profesionales */
+.table-professional {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.table-professional th {
+  background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table-professional td {
+  padding: 1rem;
+  border-bottom: 1px solid rgb(229, 231, 235);
+  font-size: 0.875rem;
+}
+
+.table-professional tr:hover {
+  background: rgb(249, 250, 251);
+}
+
+/* Gráficas de barras personalizadas */
+.bar-chart {
+  width: 100%;
+  height: 24px;
+  background: rgb(229, 231, 235);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-chart-fill {
+  height: 100%;
+  background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  border-radius: var(--radius-md);
+  transition: width var(--transition-slow) ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.bar-chart-fill span {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Efectos de animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--transition-slow) ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card-professional {
+    margin: 0.5rem;
+    border-radius: var(--radius-lg);
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .table-professional {
+    font-size: 0.75rem;
+  }
+  
+  .table-professional th,
+  .table-professional td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+/* Utilidades adicionales */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.shadow-professional {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-professional-hover:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(241, 245, 249);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgb(var(--color-primary-dark)), rgb(var(--color-primary)));
+}
+
+/* Estados de carga */
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    rgb(229, 231, 235) 25%, 
+    rgb(243, 244, 246) 50%, 
+    rgb(229, 231, 235) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Tooltips */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(17, 24, 39);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 50;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Estados de enfoque accesibles */
+.focus-visible:focus {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 2px;
+}
+
+/* Impresión optimizada */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .card-professional {
+    box-shadow: none;
+    border: 1px solid rgb(229, 231, 235);
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}
